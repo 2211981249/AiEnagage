@@ -1,365 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AiEngage</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AiEngage</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendors/bootstrap-icons/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="assets/css/app.css" />
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.svg"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        width: 100%;
+      }
 
-  <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css" />
-  <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css" />
-  <link rel="stylesheet" href="assets/css/app.css" />
-  <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    .dashboard-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px;
-      width: 100%;
-    }
+      .profile-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
 
-    .profile-img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-    }
+      .burger-btn {
+        display: flex;
+        align-items: center;
+      }
 
-    .burger-btn {
-      display: flex;
-      align-items: center;
-    }
+      .dropdown-menu {
+        min-width: 150px;
+        text-align: center;
+      }
 
-    .dropdown-menu {
-      min-width: 150px;
-      text-align: center;
-    }
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+      }
 
-    .dropdown-item {
-      display: flex;
-      align-items: center;
-    }
+      .dropdown-item i {
+        margin-right: 8px;
+        /* Adds space between the icon and text */
+      }
 
-    .dropdown-item i {
-      margin-right: 8px;
-      /* Adds space between the icon and text */
-    }
+      .dropdown-divider {
+        border: none;
+        height: 0.5px;
+        background-color: #e9ecef;
+        margin: 0.5rem 0;
+        width: calc(100% - 1rem);
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
 
-    .dropdown-divider {
-      border: none;
-      height: 0.5px;
-      background-color: #e9ecef;
-      margin: 0.5rem 0;
-      width: calc(100% - 1rem);
-      margin-left: auto;
-      margin-right: auto;
-    }
-  </style>
-</head>
-
-<body>
-  <div id="app">
-    <div id="sidebar" class="active">
-      <div class="sidebar-wrapper active">
-        <div class="sidebar-header">
-          <div class="d-flex justify-content-between">
-            <div class="logo">
-              <a href="index.html">
-                <img src="assets/images/logo/logo.png" alt="Logo" srcset="" class="logo1"
-                  style="width: 150px; height: auto;" /></a>
-            </div>
-            <div class="toggler">
-              <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+  <body>
+    <div id="app">
+      <div id="sidebar" class="active">
+        <div class="sidebar-wrapper active">
+          <div class="sidebar-header">
+            <div class="d-flex justify-content-between">
+              <div class="logo">
+                <a href="index.html">
+                  <img
+                    src="assets/images/logo/logo.png"
+                    alt="Logo"
+                    srcset=""
+                    class="logo1"
+                    style="width: 150px; height: auto"
+                /></a>
+              </div>
+              <div class="toggler">
+                <a href="#" class="sidebar-hide d-xl-none d-block"
+                  ><i class="bi bi-x bi-middle"></i
+                ></a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="sidebar-menu">
-          <ul class="menu">
-            <li class="sidebar-title">Menu</li>
-
-            <li class="sidebar-item">
-              <a href="index.html" class="sidebar-link">
-                <i class="bi bi-grid-fill"></i>
-                <span>Dashboard</span>
-              </a>
-            </li>
-            <div id="admin-subuser-features" style="display: none">
-              <li class="sidebar-item">
-                <a href="single-call.html" class="sidebar-link">
-                  <i class="bi bi-telephone-fill"></i>
-                  <span>Single Call</span>
-                </a>
-              </li>
+          <div class="sidebar-menu">
+            <ul class="menu">
+              <li class="sidebar-title">Menu</li>
 
               <li class="sidebar-item">
-                <a href="bulk-call.html" class="sidebar-link">
-                  <i class="bi bi-stack"></i>
-                  <span>Bulk Call</span>
+                <a href="index.html" class="sidebar-link">
+                  <i class="bi bi-grid-fill"></i>
+                  <span>Dashboard</span>
                 </a>
               </li>
-              <li class="sidebar-item">
-                <a href="call-logs.html" class="sidebar-link">
-                  <i class="bi bi-journal-text"></i>
-                  <span>Call Logs</span>
-                </a>
-              </li>
+              <div id="admin-subuser-features" style="display: none">
+                <li class="sidebar-item">
+                  <a href="single-call.html" class="sidebar-link">
+                    <i class="bi bi-telephone-fill"></i>
+                    <span>Single Call</span>
+                  </a>
+                </li>
 
-            </div>
+                <li class="sidebar-item">
+                  <a href="bulk-call.html" class="sidebar-link">
+                    <i class="bi bi-stack"></i>
+                    <span>Bulk Call</span>
+                  </a>
+                </li>
+                <li class="sidebar-item">
+                  <a href="call-logs.html" class="sidebar-link">
+                    <i class="bi bi-journal-text"></i>
+                    <span>Call Logs</span>
+                  </a>
+                </li>
+              </div>
 
-            <div id="admin-super_admin" style="display: none">
-              <li class="sidebar-item">
-                <a href="users.html" class="sidebar-link">
-                  <i class="bi bi-envelope-fill"></i>
-                  <span>Users</span>
-                </a>
-              </li>
-              <li class="sidebar-item">
-                <a href="appointment.html" class="sidebar-link">
-                  <i class="bi bi-calendar-check-fill"></i>
-                  <span>Appointment</span>
-                </a>
-              </li>
-              <li class="sidebar-item" style="display: none;" id="edit-config">
-                <a href="Edit-Config.html" class="sidebar-link">
-                  <i class="bi bi-calendar-check-fill"></i>
-                  <span>Connect Twilio</span>
-                </a>
-              </li>
+              <div id="admin-super_admin" style="display: none">
+                <li class="sidebar-item">
+                  <a href="users.html" class="sidebar-link">
+                    <i class="bi bi-envelope-fill"></i>
+                    <span>Users</span>
+                  </a>
+                </li>
+                <li class="sidebar-item">
+                  <a href="appointment.html" class="sidebar-link">
+                    <i class="bi bi-calendar-check-fill"></i>
+                    <span>Appointment</span>
+                  </a>
+                </li>
+                <li class="sidebar-item" style="display: none" id="edit-config">
+                  <a href="Edit-Config.html" class="sidebar-link">
+                    <i class="bi bi-calendar-check-fill"></i>
+                    <span>Connect Twilio</span>
+                  </a>
+                </li>
 
+                <li class="sidebar-item" style="display: none" id="edit-vapi">
+                  <a href="vapiConfig.html" class="sidebar-link">
+                    <i class="bi bi-calendar-check-fill"></i>
+                    <span>Add Vapi</span>
+                  </a>
+                </li>
 
-              <li class="sidebar-item" style="display: none;" id="edit-vapi">
-                <a href="vapiConfig.html" class="sidebar-link">
-                  <i class="bi bi-calendar-check-fill"></i>
-                  <span>Add Vapi</span>
-                </a>
-              </li>
+                <li class="sidebar-item" style="display: none" id="send-config">
+                  <a href="sendgrid-config.html" class="sidebar-link">
+                    <i class="bi bi-calendar-check-fill"></i>
+                    <span>Connect SendGrid</span>
+                  </a>
+                </li>
+              </div>
               <li class="sidebar-item" style="display: none" id="prompt">
                 <a href="add-prompt.html" class="sidebar-link">
                   <i class="bi bi-calendar-check-fill"></i>
                   <span>Add Prompt</span>
                 </a>
               </li>
-
-
-
-              <li class="sidebar-item" style="display: none;" id="send-config">
-                <a href="sendgrid-config.html" class="sidebar-link">
-                  <i class="bi bi-calendar-check-fill"></i>
-                  <span>Connect SendGrid</span>
-                </a>
-              </li>
-
-
-            </div>
-            <div id="bulk-email-sms" style="display: none">
-              <li class="sidebar-item">
-                <a href="bulk-call-email.html" class="sidebar-link">
-                  <i class="fa-solid fa-envelope"></i>
-                  <span>Send Bulk Email</span>
-                </a>
-              </li>
-              <li class="sidebar-item active">
-                <a href="bulk-sms.html " class="sidebar-link">
-                  <i class="fa-solid fa-comments"></i>
-                  <span>Send Bulk SMS</span>
-                </a>
-              </li>
-            </div>
-
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div id="main">
-      <header class="dashboard-header d-flex align-items-center justify-content-between px-3 py-2">
-        <a href="#" class="burger-btn d-block d-xl-none">
-          <i class="bi bi-justify fs-3"></i>
-        </a>
-
-        <!-- Profile Image and Dropdown Container -->
-        <div class="dropdown d-flex ms-auto">
-          <img src="./assets/images/faces/profile-pic.jpg" alt="Profile" class="profile-img dropdown-toggle"
-            id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false" />
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown" id="dropdownMenu">
-            <li>
-              <a class="dropdown-item" href="profile.html">
-                <i class="fa-solid fa-user"></i> Profile
-              </a>
-            </li>
-            <li></li>
-            <li>
-              <a class="dropdown-item" href="#" id="logout-btn">
-                <i class="fa-solid fa-right-from-bracket"></i> Log Out
-              </a>
-            </li>
-          </ul>
-        </div>
-      </header>
-
-      <div class="page-heading">
-        <div class="page-title">
-          <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-              <h3>Make Bulk SMS</h3>
-              <button onclick="downloadSampleFile()" class="btn btn-primary float-end">
-                Download Sample File
-              </button>
-            </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
-              <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item">
-                    <a href="index.html">Dashboard</a>
-                  </li>
-                  <li class="breadcrumb-item active" aria-current="page">
-                    Bulk SMS
-                  </li>
-                </ol>
-              </nav>
-            </div>
+              <div id="bulk-email-sms" style="display: none">
+                <li class="sidebar-item">
+                  <a href="bulk-call-email.html" class="sidebar-link">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Send Bulk Email</span>
+                  </a>
+                </li>
+                <li class="sidebar-item active">
+                  <a href="bulk-sms.html " class="sidebar-link">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Send Bulk SMS</span>
+                  </a>
+                </li>
+              </div>
+            </ul>
           </div>
         </div>
+      </div>
+      <div id="main">
+        <header
+          class="dashboard-header d-flex align-items-center justify-content-between px-3 py-2"
+        >
+          <a href="#" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+          </a>
 
-        <!-- Basic Horizontal form layout section start -->
-        <!-- Bulk Call Form -->
-        <section id="bulk-horizontal-layouts" class="container mt-5">
-          <div class="row justify-content-center">
-            <div class="col-md-15">
-              <div class="card">
-                <div class="card-content">
-                  <div class="card-body">
-                    <form class="form form-horizontal" id="bulk-call-form">
-                      <div class="form-body">
-                        <div class="row">
-                          <div class="col-md-4">
-                            <label>CSV File Upload</label>
-                          </div>
-                          <div class="col-md-8 form-group">
-                            <input type="file" id="file-upload" class="form-control" name="file" accept=".xlsx" />
-                          </div>
-                          <div class="col-md-4">
-                            <label>Additional Information</label>
-                          </div>
-                          <div class="col-md-8 form-group">
-                            <input type="text" id="additional-info" class="form-control"
-                              placeholder="Enter additional information" />
-                          </div>
+          <!-- Profile Image and Dropdown Container -->
+          <div class="dropdown d-flex ms-auto">
+            <img
+              src="./assets/images/faces/profile-pic.jpg"
+              alt="Profile"
+              class="profile-img dropdown-toggle"
+              id="profileDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            />
+            <ul
+              class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="profileDropdown"
+              id="dropdownMenu"
+            >
+              <li>
+                <a class="dropdown-item" href="profile.html">
+                  <i class="fa-solid fa-user"></i> Profile
+                </a>
+              </li>
+              <li></li>
+              <li>
+                <a class="dropdown-item" href="#" id="logout-btn">
+                  <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                </a>
+              </li>
+            </ul>
+          </div>
+        </header>
 
-                          <div class="col-sm-12 d-flex justify-content-end mt-3">
-                            <button type="button" onclick="processBulkCalls()" class="btn btn-primary me-1 mb-1">
-                              Submit
-                            </button>
-                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">
-                              Reset
-                            </button>
+        <div class="page-heading">
+          <div class="page-title">
+            <div class="row">
+              <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Make Bulk SMS</h3>
+                <button
+                  onclick="downloadSampleFile()"
+                  class="btn btn-primary float-end"
+                >
+                  Download Sample File
+                </button>
+              </div>
+              <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav
+                  aria-label="breadcrumb"
+                  class="breadcrumb-header float-start float-lg-end"
+                >
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="index.html">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Bulk SMS
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          <!-- Basic Horizontal form layout section start -->
+          <!-- Bulk Call Form -->
+          <section id="bulk-horizontal-layouts" class="container mt-5">
+            <div class="row justify-content-center">
+              <div class="col-md-15">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="card-body">
+                      <form class="form form-horizontal" id="bulk-call-form">
+                        <div class="form-body">
+                          <div class="row">
+                            <div class="col-md-4">
+                              <label>CSV File Upload</label>
+                            </div>
+                            <div class="col-md-8 form-group">
+                              <input
+                                type="file"
+                                id="file-upload"
+                                class="form-control"
+                                name="file"
+                                accept=".xlsx"
+                              />
+                            </div>
+                            <div class="col-md-4">
+                              <label>Additional Information</label>
+                            </div>
+                            <div class="col-md-8 form-group">
+                              <input
+                                type="text"
+                                id="additional-info"
+                                class="form-control"
+                                placeholder="Enter additional information"
+                              />
+                            </div>
+
+                            <div
+                              class="col-sm-12 d-flex justify-content-end mt-3"
+                            >
+                              <button
+                                type="button"
+                                onclick="processBulkCalls()"
+                                class="btn btn-primary me-1 mb-1"
+                              >
+                                Submit
+                              </button>
+                              <button
+                                type="reset"
+                                class="btn btn-light-secondary me-1 mb-1"
+                              >
+                                Reset
+                              </button>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </form>
+                      </form>
+                    </div>
                   </div>
                 </div>
+                <div id="call-results"></div>
+                <!-- Display call results here -->
               </div>
-              <div id="call-results"></div>
-              <!-- Display call results here -->
             </div>
-          </div>
-        </section>
-        <!-- // Basic Horizontal form layout section end -->
+          </section>
+          <!-- // Basic Horizontal form layout section end -->
+        </div>
       </div>
     </div>
-  </div>
-  <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="loader.js"></script>
-  <script src="./env.js"></script>
-  <script>
-    const logoutBtn = document.getElementById("logout-btn");
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="loader.js"></script>
+    <script src="./env.js"></script>
+    <script>
+      const logoutBtn = document.getElementById("logout-btn");
 
-    logoutBtn.addEventListener("click", () => {
-      localStorage.removeItem("token");
-      window.location.href = "login.html";
-    });
+      logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("token");
+        window.location.href = "login.html";
+      });
 
-    function arrayBufferToBase64(buffer) {
-      let binary = "";
-      const bytes = new Uint8Array(buffer);
-      bytes.forEach((b) => (binary += String.fromCharCode(b)));
-      return window.btoa(binary);
-    }
-
-    function processBulkCalls() {
-      const fileInput = document.getElementById("file-upload");
-      const additionalInfo = document.getElementById("additional-info").value;
-
-      if (fileInput.files.length === 0) {
-        alert("Please upload an XLSX file.");
-        return;
-      }
-      if (additionalInfo === "") {
-        alert("All field required");
-        return;
+      function arrayBufferToBase64(buffer) {
+        let binary = "";
+        const bytes = new Uint8Array(buffer);
+        bytes.forEach((b) => (binary += String.fromCharCode(b)));
+        return window.btoa(binary);
       }
 
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, { type: "array" });
-        const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
-        const jsonData = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
-        const users = jsonData.slice(1);
+      function processBulkCalls() {
+        const fileInput = document.getElementById("file-upload");
+        const additionalInfo = document.getElementById("additional-info").value;
 
-        const dataToSend = {
-          users,
-          additionalInfo,
+        if (fileInput.files.length === 0) {
+          alert("Please upload an XLSX file.");
+          return;
+        }
+        if (additionalInfo === "") {
+          alert("All field required");
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: "array" });
+          const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+          const jsonData = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
+          const users = jsonData.slice(1);
+
+          const dataToSend = {
+            users,
+            additionalInfo,
+          };
+
+          sendToBackend(dataToSend);
         };
 
-        sendToBackend(dataToSend);
-      };
-
-      reader.readAsArrayBuffer(fileInput.files[0]);
-    }
-    function sendToBackend(dataToSend) {
-      fetch(`${url}/api/send-sms`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify(dataToSend),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            Swal.fire({
-              icon: "success",
-              title: "Success",
-              text: data.message,
-              toast: true,
-              position: "top-end",
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener("mouseenter", Swal.stopTimer);
-                toast.addEventListener("mouseleave", Swal.resumeTimer);
-              },
-            });
-          } else {
+        reader.readAsArrayBuffer(fileInput.files[0]);
+      }
+      function sendToBackend(dataToSend) {
+        fetch(`${url}/api/send-sms`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify(dataToSend),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              Swal.fire({
+                icon: "success",
+                title: "Success",
+                text: data.message,
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener("mouseenter", Swal.stopTimer);
+                  toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+              });
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: "error",
+                text: "Internal Server Error...",
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener("mouseenter", Swal.stopTimer);
+                  toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+              });
+            }
+          })
+          .catch((error) => {
             Swal.fire({
               icon: "error",
-              title: "error",
-              text: "Internal Server Error...",
+              title: "Error",
+              text: error.message,
               toast: true,
               position: "top-end",
               showConfirmButton: false,
@@ -370,122 +440,105 @@
                 toast.addEventListener("mouseleave", Swal.resumeTimer);
               },
             });
-          }
-        })
-        .catch((error) => {
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: error.message,
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
           });
-        });
-    }
-    function downloadSampleFile() {
-      window.location.href = `${url}/api/auth/download-sms`;
-    }
-    async function validateToken() {
-      const token = localStorage.getItem("token");
-
-      if (!token) {
-        // If no token, redirect to login page
-        window.location.href = "login.html";
-        return;
       }
+      function downloadSampleFile() {
+        window.location.href = `${url}/api/auth/download-sms`;
+      }
+      async function validateToken() {
+        const token = localStorage.getItem("token");
 
-      showLoader();
-      try {
-        const response = await fetch(
-          `${url}/api/auth/validate`,
-          {
+        if (!token) {
+          // If no token, redirect to login page
+          window.location.href = "login.html";
+          return;
+        }
+
+        showLoader();
+        try {
+          const response = await fetch(`${url}/api/auth/validate`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${token}`,
             },
+          });
+
+          hideLoader();
+          if (!response.ok) {
+            throw new Error("Token validation failed");
           }
-        );
 
-        hideLoader();
-        if (!response.ok) {
-          throw new Error("Token validation failed");
-        }
+          const data = await response.json();
 
-        const data = await response.json();
+          const profileImg = document.getElementById("profileDropdown");
+          if (data.data.profileImage && data.data.profileImage.buffer) {
+            const base64String = arrayBufferToBase64(
+              data.data.profileImage.buffer.data
+            );
+            const mimeType = data.data.profileImage.contentType;
+            profileImg.src = `data:${mimeType};base64,${base64String}`;
+          } else {
+            console.log("Using default profile image");
+          }
+          if (!data.valid) {
+            // If token is not valid, redirect to login page
+            window.location.href = "login.html";
+          }
+          const role = data.role;
+          const editConfig = document.getElementById("edit-config");
+          const sendConfig = document.getElementById("send-config");
+          const prompt = document.getElementById("prompt");
+          prompt.style.display = "block";
 
-        const profileImg = document.getElementById("profileDropdown");
-        if (data.data.profileImage && data.data.profileImage.buffer) {
-          const base64String = arrayBufferToBase64(
-            data.data.profileImage.buffer.data
-          );
-          const mimeType = data.data.profileImage.contentType;
-          profileImg.src = `data:${mimeType};base64,${base64String}`;
-        } else {
-          console.log("Using default profile image");
-        }
-        if (!data.valid) {
-          // If token is not valid, redirect to login page
-          window.location.href = "login.html";
-        }
-        const role = data.role;
-        const editConfig = document.getElementById("edit-config");
-        const sendConfig = document.getElementById("send-config");
-        const prompt = document.getElementById("prompt");
-        prompt.style.display = "block";
+          if (role === "super_admin") {
+          }
+          if (role === "admin") {
+          }
+          if (role === "admin" || role === "super_admin") {
+            document.getElementById("admin-super_admin").style.display =
+              "block";
+            editConfig.style.display = "block";
+            sendConfig.style.display = "block";
+          }
+          if (
+            role === "super_admin" ||
+            role === "admin" ||
+            role === "subuser"
+          ) {
+            document.getElementById("admin-subuser-features").style.display =
+              "block";
+            document.getElementById("bulk-email-sms").style.display = "block";
+          }
 
-        if (role === "super_admin") {
-        }
-        if (role === "admin") {
+          if (
+            role === "admin" ||
+            role === "subuser" ||
+            role === "super_admin"
+          ) {
+            document.getElementById("admin-subuser-features").style.display =
+              "block";
+          }
+          if (
+            role === "admin" ||
+            role === "subuser" ||
+            role === "super_admin"
+          ) {
+            const dropdownMenu = document.getElementById("dropdownMenu");
 
-        }
-        if (role === "admin" || role === "super_admin") {
-          document.getElementById("admin-super_admin").style.display =
-            "block";
-          editConfig.style.display = "block"
-          sendConfig.style.display = "block"
-        }
-        if (role === "super_admin" || role === "admin" || role === "subuser") {
-          document.getElementById("admin-subuser-features").style.display = "block";
-          document.getElementById("bulk-email-sms").style.display = "block";
-        }
-
-
-        if (
-          role === "admin" ||
-          role === "subuser" ||
-          role === "super_admin"
-        ) {
-          document.getElementById("admin-subuser-features").style.display =
-            "block";
-        }
-        if (
-          role === "admin" ||
-          role === "subuser" ||
-          role === "super_admin"
-        ) {
-          const dropdownMenu = document.getElementById("dropdownMenu");
-
-          const adminItems = `
+            const adminItems = `
 
     
     `;
 
-          // Insert admin items before the logout button
-          dropdownMenu.insertAdjacentHTML("beforeend", adminItems);
-        }
+            // Insert admin items before the logout button
+            dropdownMenu.insertAdjacentHTML("beforeend", adminItems);
+          }
 
-        if (role === "admin") {
-          const dropdownMenu = document.getElementById("dropdownMenu");
+          if (role === "admin") {
+            const dropdownMenu = document.getElementById("dropdownMenu");
 
-          const adminItems = `
+            const adminItems = `
       <li>
         <a class="dropdown-item" href="add-member.html">
           <i class="fa-solid fa-comments"></i> Add Member
@@ -495,14 +548,14 @@
       </li>
     `;
 
-          // Insert admin items before the logout button
-          dropdownMenu.insertAdjacentHTML("beforeend", adminItems);
-        }
+            // Insert admin items before the logout button
+            dropdownMenu.insertAdjacentHTML("beforeend", adminItems);
+          }
 
-        if (role === "admin" || role === "user") {
-          const dropdownMenu = document.getElementById("dropdownMenu");
+          if (role === "admin" || role === "user") {
+            const dropdownMenu = document.getElementById("dropdownMenu");
 
-          const adminItems = `
+            const adminItems = `
 <li>
 <a class="dropdown-item" href="buy-membership.html">
 <i class="fa-solid fa-credit-card"></i> Buy Membership
@@ -522,15 +575,13 @@ margin-right: auto;
 />
 </li>
 `;
-          dropdownMenu.insertAdjacentHTML("beforeend", adminItems);
+            dropdownMenu.insertAdjacentHTML("beforeend", adminItems);
+          }
+        } catch (error) {
+          window.location.href = "login.html";
         }
-      } catch (error) {
-        window.location.href = "login.html";
       }
-    }
-    window.onload = validateToken;
-
-  </script>
-</body>
-
+      window.onload = validateToken;
+    </script>
+  </body>
 </html>
