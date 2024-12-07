@@ -464,11 +464,9 @@ router.post("/forgot-password", async (req, res) => {
   const { email } = req.body;
 
   try {
-    // Attempt to find the user in the User collection
     let user = await User.findOne({ email });
     let isSubUser = false;
 
-    // If not found in User collection, attempt to find in SubUser collection
     if (!user) {
       user = await SubUser.findOne({ email });
       isSubUser = true; // Mark this as a SubUser if found here

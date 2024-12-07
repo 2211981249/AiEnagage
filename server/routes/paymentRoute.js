@@ -118,11 +118,11 @@ router.post("/payment", async (req, res) => {
       mode: "subscription",
       success_url: `https://aienagage.onrender.com/api/auth/success/${userEmail}/${plan}/${amount}`,
 
-     // success_url: `http://localhost:3000/api/auth/success/${userEmail}/${plan}/${amount}`,
+      //success_url: `http://localhost:3000/api/auth/success/${userEmail}/${plan}/${amount}`,
     
       cancel_url: "https://aienagage.onrender.com/api/auth/failed",   
 
-     // cancel_url: "http://localhost:3000/api/auth/failed",      
+      //cancel_url: "http://localhost:3000/api/auth/failed",      
 
       customer_email: userEmail,
     });
@@ -139,12 +139,26 @@ router.post("/payment", async (req, res) => {
 router.get("/success/:email/:payment/:amount", async (req, res) => {
   try {
     const { email, payment, amount } = req.params;
+
+    let credit=0;
+    if(payment === "Platinum")
+    {
+      credit=6000;
+    }else if(payment==="Gold")
+    {
+      credit=2500;
+    }else if(payment === "Silver"){
+      credit=1200; 
+    }
+
+
+    console.log("p"+ payment , "a" +amount);
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(401).send({ message: "User doesn't exist", success: false });
     }
     user.role = "admin";
-    user.credits += parseInt(amount, 10);
+    user.credits += parseInt(credit, 10);
 
     const newTransaction = await transactionSchema.create({
       userId: user._id,
