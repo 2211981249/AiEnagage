@@ -166,7 +166,7 @@ router.get("/success/:email/:payment/:amount", async (req, res) => {
       amount: payment,
       date: new Date(),
     });
-
+ //payment
     user.transactions.push(newTransaction._id);
     user.lastPlan = { plan: payment, amount: amount };
     await user.save();
